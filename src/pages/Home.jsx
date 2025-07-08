@@ -7,14 +7,14 @@ import Contact from "./Contact";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
-
-  let downloadResume =()=>{
-    const link = document.createElement("a");
-    link.href = "/mohitcv.pdf"; 
-    link.download = "MohitSharma_cv.pdf"; 
-    link.click();
-
-  }
+  const downloadResume = () => {
+  const link = document.createElement("a");
+  link.href = "/mohitcv.pdf"; 
+  link.download = "Mohit_Sharma_Resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
   
   return (
     <>
