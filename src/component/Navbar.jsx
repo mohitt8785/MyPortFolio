@@ -24,9 +24,15 @@ const Navbar = () => {
             Contact
           </NavLink>
         </div>
-        <button className="hidden px-4 py-2 text-white transition-transform duration-300 transform rounded rounded-full bg-gradient-to-r from-green-400 to-blue-500 md:inline hover:scale-105">
-          Connect Me
-        </button>
+        <a
+          href="https://www.linkedin.com/in/mohit-sharma-9924122b2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="hidden px-4 py-2 text-white transition-transform duration-300 transform rounded-full bg-gradient-to-r from-green-400 to-blue-500 md:inline hover:scale-105">
+            Connect Me
+          </button>
+        </a>
       </div>
     </nav>
   );

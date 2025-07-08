@@ -16,27 +16,13 @@ const services = [
     title: "Backend Development",
     description: "Developing robust server-side logic and databases.",
   },
-  {
-    id: 4,
-    title: "Full-Stack Development",
-    description: "Combining both frontend and backend development skills.",
-  },
-  {
-    id: 5,
-    title: "Content Writing",
-    description: "Writing content for your business and companies.",
-  },
-  {
-    id: 6,
-    title: "Digital Marketing",
-    description: "Promote your business with our digital marketing team.",
-  },
+
 ];
 const Services = () => {
   return (
     <div className="py-20 text-white bg-black " id="service">
       <div className="container px-8 mx-auto md:px-16 lg:px-24">
-        <h2 className="mb-12 text-4xl font-bold text-center">My Services</h2>
+        <h2 className="mb-20 text-4xl font-bold text-center">My Services</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div
