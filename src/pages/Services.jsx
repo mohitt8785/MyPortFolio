@@ -20,14 +20,14 @@ const services = [
 ];
 const Services = () => {
   return (
-    <div className="py-20 text-white bg-black " id="service">
+    <div className="text-white bg-black py-35 " id="service">
       <div className="container px-8 mx-auto md:px-16 lg:px-24">
-        <h2 className="mb-20 text-4xl font-bold text-center">My Services</h2>
+        <h2 className="mt-6 text-5xl font-bold text-center mb-25">My Services</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div
               key={service.id}
-              className="px-6 pb-6 transition-transform duration-300 transform bg-gray-800 rounded-lg hover:shadow-lg hover:scale-105"
+              className="px-6 transition-transform duration-300 transform bg-gray-800 rounded-lg pb-15 hover:shadow-lg hover:scale-105"
             >
               <div
                 className="text-2xl font-bold text-right text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-400"

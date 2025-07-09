@@ -3,9 +3,9 @@ import HeroImage from "../assets/Hero.jpeg";
 
 const About = () => {
   return (
-    <div className="text-white bg-black py-27 ">
+    <div className="text-white bg-black py-23 ">
       <div className="container px-8 mx-auto md:px-16 lg:px-24">
-        <h2 className="mb-12 font-bold text-center text-4x1">About Me</h2>
+        <h2 className="mb-20 text-5xl font-bold text-center">About Me</h2>
         <div className="flex flex-col items-center md:flex-row md:space-x-12">
           <img
             src={HeroImage}
@@ -56,7 +56,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-           <div className="flex justify-around mt-12 text-center">
+           <div className="flex justify-around text-center mt-22">
   <div>
     <h3 className="font-bold text-transparent text-2x1 bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
       <span>6+ </span> <span className="italic text-white">Month Experience</span>

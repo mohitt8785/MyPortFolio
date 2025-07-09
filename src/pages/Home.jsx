@@ -4,6 +4,7 @@ import About from "./About";
 import Services from "./Services";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import Footer from "../component/Footer";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
@@ -57,6 +58,7 @@ const Home = () => {
       <Projects />
 
       <Contact />
+       <Footer/>
     </>
   );
 };

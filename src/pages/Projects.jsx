@@ -29,9 +29,9 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="py-20 text-white bg-black "  id="project">
+    <div className="text-white bg-black py-26 "  id="project">
       <div className="container px-8 mx-auto md:px-16 lg:px-24">
-        <h2 className="mb-12 text-4xl font-bold text-center">My Projects</h2>
+        <h2 className="mb-12 text-5xl font-bold text-center">My Projects</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <div key={project.id} className="p-6 transition-transform duration-300 transform bg-gray-800 rounded-lg hover:shadow-lg hover:scale-105">
