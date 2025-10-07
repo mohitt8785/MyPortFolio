@@ -1,11 +1,12 @@
 import React from "react";
-import HeroImage from "../assets/Hero.jpeg";
+// import HeroImage from "../assets/Hero.jpeg";
 import About from "./About";
 import Services from "./Services";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "../component/Footer";
 import { NavLink } from "react-router-dom";
+import MohitHome from "../assets/MohitHome.jpeg"
 
 const Home = () => {
   const downloadResume = () => {
@@ -21,7 +22,7 @@ const Home = () => {
     <>
       <div className="py-16 text-center text-white bg-black">
         <img
-          src={HeroImage}
+          src={MohitHome}
           alt=""
           className="object-cover w-48 h-48 mx-auto mb-8 transition duration-300 rounded-full transform-transform hover:scale-105"
         />

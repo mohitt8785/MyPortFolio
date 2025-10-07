@@ -1,5 +1,6 @@
 import React from "react";
-import HeroImage from "../assets/Hero.jpeg";
+// import HeroImage from "../assets/Hero.jpeg";
+import MohitAbout from "../assets/MohitAbout.jpeg";
 
 const About = () => {
   return (
@@ -8,7 +9,7 @@ const About = () => {
         <h2 className="mb-20 text-5xl font-bold text-center">About Me</h2>
         <div className="flex flex-col items-center md:flex-row md:space-x-12">
           <img
-            src={HeroImage}
+            src={MohitAbout}
             alt=""
             className="object-cover mb-8 rounded w-72 h-80 md:mb-0"
           />
