@@ -27,7 +27,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="text-white bg-black py-10" id="service">
+    <div className="text-white bg-black py-26" id="service">
       <div className="container px-6 mx-auto md:px-12 lg:px-20">
         <h2 className="mt-6 text-4xl md:text-5xl font-bold text-center mb-12">
           My Services

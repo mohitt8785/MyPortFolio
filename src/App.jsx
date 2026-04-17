@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -7,11 +7,9 @@ import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
-
-
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
 
       <div className="content">
@@ -21,12 +19,9 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-         
-
         </Routes>
       </div>
-     
-    </BrowserRouter>
+    </>
   );
 }
 

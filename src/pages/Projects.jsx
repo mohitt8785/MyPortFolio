@@ -1,42 +1,51 @@
 import React from "react";
 // import GeminiImg from "../assets/gemini.png"; // Add your project image
 import Hero from "../assets/Hero.jpeg"
+import Project_1 from "../assets/Project_1.png"
+import Project_2 from "../assets/Project_2.png"
+import Project_3 from "../assets/Project_3.png"
 
 const projects = [
   {
-     id: 1,
-    name: "GEMINI AI Project",
+    id: 1,
+    name: "Client Management System (MERN Stack)",
     description:
-      "AI-powered chatbot web app built with React.js and Gemini API, featuring a clean and responsive UI.",
-    technologies: ["React.js", "Gemini API", "Tailwind CSS"],
-    image: Hero,
-    live: "https://mohit-ai-project.netlify.app/",
-    github: "https://github.com/mohitt8785/Gemini-AI",
+      "Full-stack client management system with CRUD operations, JWT authentication, and responsive UI.",
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    image: Project_1,
+    live: "#",
+    github: "https://github.com/mohitt8785",
   },
+
   {
     id: 2,
-    name: "Portfolio Website",
+    name: "Club Entry Form (MERN Stack)",
     description:
-      "Built using React.js and Tailwind CSS, featuring smooth transitions and a mobile-friendly design.",
-    technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
-    image: Hero,
-    live: "https://mohitsharmaportfolio.netlify.app/",
-    github: "https://github.com/mohitt8785/MyPortFolio.git",
-  },
-  {
-    id: 3,
-    name: "Blog Website (Full Stack)",
-    description: "A complete MERN stack blog website with frontend and backend features.",
+      "Club entry management system with form validation, secure data storage in MongoDB, and admin dashboard.",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    image: Hero,
-    live: "#", // Add live link if available
-    github: "https://github.com/mohitt8785/Blog-Website-Frontend",
+    image: Project_2,
+    live: "#",
+    github: "https://github.com/mohitt8785",
   },
+
+   {
+    id: 3,
+    name: "Gemini AI Project",
+    description:
+      "AI-powered chatbot web built with React.js and Gemini API, featuring a clean and responsive UI.",
+    technologies: ["React.js", "Gemini API", "Tailwind CSS"],
+    image: Project_3,
+    live: "https://mohit-ai-project.netlify.app/",
+    github: "https://github.com/mohitt8785",
+  },
+
+
+
 ];
 
 const Projects = () => {
   return (
-    <div className="text-white bg-black py-24" id="project">
+    <div className="text-white bg-black py-13" id="project">
       <div className="container px-6 mx-auto md:px-12 lg:px-20">
         <h2 className="mb-12 text-4xl md:text-5xl font-bold text-center">
           My Projects

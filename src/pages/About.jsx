@@ -3,7 +3,7 @@ import MohitAbout from "../assets/MohitAbout.jpeg";
 
 const About = () => {
   return (
-    <section className="text-white bg-black py-10">
+    <section className="text-white bg-black py-18">
       <div className="container px-6 mx-auto md:px-12 lg:px-20">
         {/* Section Title */}
         <h2 className="mb-12 text-4xl font-bold text-center md:text-5xl">
@@ -37,11 +37,11 @@ const About = () => {
             {/* Skills */}
             <div className="space-y-4">
               {[
-                { name: "HTML & CSS", level: "w-10/12" },
-                { name: "JavaScript", level: "w-11/12" },
+                { name: "HTML & CSS", level: "w-11/12" },
+                { name: "JavaScript", level: "w-10/12" },
                 { name: "React JS", level: "w-9/12" },
-                { name: "Node.js & Express", level: "w-8/12" },
-                { name: "MongoDB", level: "w-7/12" },
+                { name: "Node.js & Express", level: "w-9/12" },
+                { name: "MongoDB", level: "w-10/12" },
               ].map((skill, index) => (
                 <div className="flex items-center" key={index}>
                   <label className="w-3/12">{skill.name}</label>
