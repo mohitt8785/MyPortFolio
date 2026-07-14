@@ -13,7 +13,7 @@ const projects = [
       "Full-stack client management system with CRUD operations, JWT authentication, and responsive UI.",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
     image: Project_1,
-    live: "#",
+    live: "https://growthoverseas.netlify.app/",
     github: "https://github.com/mohitt8785",
   },
 
@@ -24,7 +24,7 @@ const projects = [
       "Club entry management system with form validation, secure data storage in MongoDB, and admin dashboard.",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
     image: Project_2,
-    live: "#",
+    live: "https://clubentry.netlify.app/login",
     github: "https://github.com/mohitt8785",
   },
 
