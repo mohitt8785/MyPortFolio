@@ -10,8 +10,8 @@ import MohitHome from "../assets/MohitHome.jpeg";
 const Home = () => {
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/Mohit-Resume.pdf";
-    link.download = "Mohit_Resume.pdf";
+    link.href = "/Mohit_Resume26.pdf";
+    link.download = "Mohit_Resume26.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
