@@ -1,187 +1,309 @@
-import React, { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
-import { FaEnvelope, FaMapMarkedAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa'
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaLinkedin,
+  FaLocationDot,
+  FaPhone,
+} from "react-icons/fa6";
+
+const contactDetails = [
+  {
+    id: 1,
+    label: "Email",
+    value: "msharma89339@gmail.com",
+    href: "mailto:msharma89339@gmail.com",
+    icon: FaEnvelope,
+  },
+  {
+    id: 2,
+    label: "Phone",
+    value: "+91 81464 08785",
+    href: "tel:+918146408785",
+    icon: FaPhone,
+  },
+  {
+    id: 3,
+    label: "Location",
+    value: "S.A.S. Nagar, Mohali, Punjab",
+    href: "",
+    icon: FaLocationDot,
+  },
+];
 
 const Contact = () => {
-  const form = useRef()
-  const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState('')
+  const form = useRef(null);
 
-  const sendEmail = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setStatus('')
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
+  const sendEmail = async (event) => {
+    event.preventDefault();
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus({
+        type: "error",
+        message: "Email service is not configured. Please contact me directly.",
+      });
+      return;
+    }
+
+    setLoading(true);
+    setStatus({ type: "", message: "" });
 
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      setStatus('Message sent successfully!')
-      form.current.reset()
+        publicKey
+      );
+
+      setStatus({
+        type: "success",
+        message: "Your message has been sent successfully!",
+      });
+
+      form.current?.reset();
     } catch (error) {
-      setStatus('Failed to send message. Please try again.')
+      console.error("EmailJS error:", error);
+
+      setStatus({
+        type: "error",
+        message: "Message could not be sent. Please try again.",
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <section id="contact" className="relative w-full bg-black text-white py-10 md:py-28 px-4 md:px-8 lg:px-16">
-      {/* Background Gradient */}
-      <div />
+    <section className="relative overflow-hidden bg-[#050505] px-5 py-24 text-white sm:px-8 lg:px-16">
+      {/* Background Effects */}
+      <div className="absolute right-[-150px] top-10 h-80 w-80 rounded-full bg-blue-500/10 blur-[130px]" />
+      <div className="absolute bottom-0 left-[-130px] h-72 w-72 rounded-full bg-green-500/10 blur-[120px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Contact Me
-          </h1>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section Heading */}
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+            Get in touch
+          </p>
+
+          <h2 className="text-4xl font-bold sm:text-5xl">
+            Contact <span className="text-gray-500">Me</span>
+          </h2>
+
+          <p className="mt-5 leading-7 text-gray-400">
+            Have a project, opportunity, or idea in mind? Send me a message and
+            I’ll get back to you.
+          </p>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
-          
-          {/* Left Column - Contact Info */}
-          <div className="flex flex-col justify-start">
-            <div className="mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-emerald-400 mb-4">
-                Let's Talk
-              </h2>
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                I'm open to discussing web development projects or partnership opportunities.
-              </p>
-            </div>
+        {/* Contact Layout */}
+        <div className="grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] lg:grid-cols-[0.85fr_1.15fr]">
+          {/* Left Column */}
+          <div className="border-b border-white/10 p-7 sm:p-10 lg:border-b-0 lg:border-r">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-green-400">
+              Contact information
+            </p>
 
-            {/* Contact Info Items */}
-            <div className="space-y-6 md:space-y-8">
-              {/* Email */}
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0">
-                  <FaEnvelope className="text-emerald-400 text-lg" />
-                </div>
-                <a
-                  href="mailto:msharma89339@gmail.com"
-                  className="text-white hover:text-emerald-400 transition-colors duration-300 text-sm md:text-base"
-                >
-                  msharma89339@gmail.com
-                </a>
-              </div>
+            <h3 className="mt-4 text-3xl font-semibold">
+              Let’s build something
+              <span className="block text-gray-500">useful together.</span>
+            </h3>
 
-              {/* Phone */}
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0">
-                  <FaPhone className="text-emerald-400 text-lg" />
-                </div>
-                <a
-                  href="tel:+918146408785"
-                  className="text-white hover:text-emerald-400 transition-colors duration-300 text-sm md:text-base"
-                >
-                  8146408785
-                </a>
-              </div>
+            <p className="mt-5 max-w-md leading-7 text-gray-400">
+              I’m open to MERN Stack opportunities, freelance projects, and
+              professional collaborations.
+            </p>
 
-              {/* Location */}
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0">
-                  <FaMapMarkedAlt className="text-emerald-400 text-lg" />
-                </div>
-                <span className="text-white text-sm md:text-base">
-                  S.A.S Nagar ( Mohali ), Punjab
-                </span>
-              </div>
+            {/* Contact Details */}
+            <div className="mt-10 space-y-4">
+              {contactDetails.map((item) => {
+                const Icon = item.icon;
+
+                const content = (
+                  <>
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
+                      <Icon size={17} />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="text-xs uppercase tracking-wider text-gray-500">
+                        {item.label}
+                      </p>
+
+                      <p className="mt-1 break-words text-sm text-gray-200">
+                        {item.value}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                return item.href ? (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className="group flex items-center gap-4 rounded-2xl border border-transparent p-3 transition hover:border-white/10 hover:bg-white/5"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div
+                    key={item.id}
+                    className="flex items-center gap-4 p-3"
+                  >
+                    {content}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Social Links */}
-            <div className="mt-10 md:mt-14 pt-8 md:pt-10 border-t border-gray-700">
-              <p className="text-gray-300 font-medium mb-4">Connect</p>
+            <div className="mt-10 border-t border-white/10 pt-8">
+              <p className="mb-4 text-sm text-gray-500">
+                Find me on social media
+              </p>
+
               <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/mohitt8785"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900/50 border border-gray-700 text-white hover:border-emerald-400 hover:text-emerald-400 transition-all duration-300"
+                  aria-label="Visit Mohit's GitHub profile"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-gray-300 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
                 >
-                  <FaGithub className="text-base" />
-                  <span className="text-sm">GitHub</span>
+                  <FaGithub size={17} />
+                  GitHub
                 </a>
+
                 <a
                   href="https://www.linkedin.com/in/mohitsharma8785/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900/50 border border-gray-700 text-white hover:border-emerald-400 hover:text-emerald-400 transition-all duration-300"
+                  aria-label="Visit Mohit's LinkedIn profile"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-gray-300 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
                 >
-                  <FaLinkedin className="text-base" />
-                  <span className="text-sm">LinkedIn</span>
+                  <FaLinkedin size={17} />
+                  LinkedIn
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Contact Form */}
-          <div className="w-full">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              Send a Message
-            </h2>
+          {/* Right Column */}
+          <div className="p-7 sm:p-10 lg:p-12">
+            <h3 className="text-2xl font-semibold">Send me a message</h3>
 
-            <form ref={form} onSubmit={sendEmail} className="space-y-5 md:space-y-6">
-              {/* Name Field */}
+            <p className="mt-2 text-sm text-gray-500">
+              Fill in the details below and I’ll respond as soon as possible.
+            </p>
+
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="mt-8 space-y-5"
+            >
+              {/* Name and Email */}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block text-sm font-medium text-gray-300"
+                  >
+                    Your name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    autoComplete="name"
+                    required
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-green-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-green-400/10"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium text-gray-300"
+                  >
+                    Email address
+                  </label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autoComplete="email"
+                    required
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-green-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-green-400/10"
+                  />
+                </div>
+              </div>
+
+              {/* Subject */}
               <div>
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-300">
-                  Your Name
+                <label
+                  htmlFor="subject"
+                  className="mb-2 block text-sm font-medium text-gray-300"
+                >
+                  Subject
                 </label>
+
                 <input
                   type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Enter Your Name"
+                  id="subject"
+                  name="subject"
+                  placeholder="Project or opportunity"
                   required
-                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-lg bg-slate-700/40 border border-slate-600 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-green-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-green-400/10"
                 />
               </div>
 
-              {/* Email Field */}
+              {/* Message */}
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-300">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter Your Email"
-                  required
-                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-lg bg-slate-700/40 border border-slate-600 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
-                />
-              </div>
-
-              {/* Message Field */}
-              <div>
-                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-300">
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm font-medium text-gray-300"
+                >
                   Message
                 </label>
+
                 <textarea
-                  name="message"
                   id="message"
+                  name="message"
                   rows="6"
-                  placeholder="Enter Your Message"
+                  placeholder="Tell me about your project or opportunity..."
                   required
-                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-lg bg-slate-700/40 border border-slate-600 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-green-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-green-400/10"
                 />
               </div>
 
-              {/* Status Message */}
-              {status && (
+              {/* Form Status */}
+              {status.message && (
                 <div
-                  className={`px-4 py-3 rounded-lg text-sm font-medium border transition-all duration-300 ${
-                    status.includes('successfully')
-                      ? 'bg-emerald-500/10 border-emerald-400/50 text-emerald-300'
-                      : 'bg-red-500/10 border-red-400/50 text-red-300'
+                  role="status"
+                  aria-live="polite"
+                  className={`rounded-xl border px-4 py-3 text-sm ${
+                    status.type === "success"
+                      ? "border-green-400/30 bg-green-400/10 text-green-300"
+                      : "border-red-400/30 bg-red-400/10 text-red-300"
                   }`}
                 >
-                  {status}
+                  {status.message}
                 </div>
               )}
 
@@ -189,16 +311,26 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full md:w-auto px-8 py-3 md:py-4 rounded-full font-semibold text-white bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 active:scale-95"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition duration-300 hover:-translate-y-1 hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 sm:w-auto"
               >
-                {loading ? 'Sending...' : 'Send'}
+                {loading ? (
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-black/30 border-t-black" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <span aria-hidden="true">→</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
